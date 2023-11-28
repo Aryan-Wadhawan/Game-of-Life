@@ -1,5 +1,5 @@
 import pygame
-
+import random
 pygame.init()
 
 BLACK = (0,0,0)
@@ -16,10 +16,17 @@ screen = pygame.display.set_mode((WIDTH, HEIGHT))
 
 clock = pygame.time.Clock()
 
+
+# Pressing "g" will place life across the  board in random places
+def gen(num):
+    return set([(random.randrange(0,GRID_HEIGHT), random.randrange(0,GRID_WIDTH)) for _ in range(num)])
+
+# This function draws the grid (initialisation)
 def draw_grid(positions):
     for position in positions:
         col, row = position
-
+        top_left = (col * TILE_SIZE, row * TILE_SIZE)
+        pygame.draw.rect(screen, BLUE, (*top_left, TILE_SIZE, TILE_SIZE))
 
     for row in range(GRID_HEIGHT):
         pygame.draw.line(screen, BLACK, (0,row * TILE_SIZE), (WIDTH, row * TILE_SIZE))
@@ -28,16 +35,43 @@ def draw_grid(positions):
         pygame.draw.line(screen, BLACK, (col * TILE_SIZE, 0), (col * TILE_SIZE, HEIGHT))
 
 
+#def adjust_grid(positions):
+
 def main():
     running = True
+    playing = False
 
     positions = set()
+    positions.add((10,10))
     while running:
         clock.tick(FPS)
 
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 running = False
+
+
+            if event.type == pygame.MOUSEBUTTONDOWN:
+                x, y = pygame.mouse.get_pos()
+                col = x // TILE_SIZE
+                row = y // TILE_SIZE
+                pos = (col, row)
+
+                if pos in positions:
+                    positions.remove(pos)
+                else:
+                    positions.add(pos)
+
+            if event.type == pygame.KEYDOWN:
+                if event.key == pygame.K_SPACE:
+                    playing = not playing
+
+                if event.key == pygame.K_c:
+                    positions = set()
+                    playing = False
+
+                if event.key == pygame.K_g:
+                    positions = gen(random.randrange(2,5)* GRID_WIDTH)
 
         screen.fill(GREY)
         draw_grid(positions)
