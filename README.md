@@ -16,4 +16,4 @@ A mouse click can be used to add and remove life.
 
 TODO:
 1. Addition of more cellular automata functions along with an option for the user to make their own laws under a given set of rules.
-2. Stop/Pause the game when there is no alive cell on the grid
+2. Stop/Pause the game when there is no living cell on the grid
