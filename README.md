@@ -10,9 +10,10 @@ Press Space to play and pause the game.
 
 G can be presed during the life generation to add randomness.
 
-Mouse click can be used to add and remove life.
+A mouse click can be used to add and remove life.
 
-Update:= Click and Drag mouse to add/remove life on the grid. (COMPLETED 29/11/23)
+- Click and Drag the mouse to add/remove life on the grid. (COMPLETED 29/11/23)
 
-Next Update:= Addition of more cellular automata function along with an option for the user to make their own laws under given set of rules.
-
+TODO:
+1. Addition of more cellular automata functions along with an option for the user to make their own laws under a given set of rules.
+2. Stop/Pause the game when there is no alive cell on the grid
