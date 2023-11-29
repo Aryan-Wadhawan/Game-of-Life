@@ -1,14 +1,14 @@
 # Game-of-Life
 
-re creating Conway's game of life in python.
+re creating Conway's game of life in Python.
 
 Manual
 
-Press C to resset the view, remove all life.
-Press G to generate random life in the grid.
-Press Space to play and pause the game.
+- Press C to reset the view, and remove all life.
+- Press G to generate random life in the grid.
+- Press Space to play and pause the game.
 
-G can be presed during the life generation to add randomness.
+G can be pressed during the life generation to add randomness.
 
 A mouse click can be used to add and remove life.
 
