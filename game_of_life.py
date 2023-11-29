@@ -82,6 +82,7 @@ def get_neighbors(pos):
 
 
 def main():
+    drawing = False
     running = True
     playing = False
     count = 0
@@ -104,18 +105,40 @@ def main():
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 running = False
-
+            # This event add/removes life by a single mouse click
             if event.type == pygame.MOUSEBUTTONDOWN:
+
                 x, y = pygame.mouse.get_pos()
                 col = x // TILE_SIZE
                 row = y // TILE_SIZE
                 pos = (col, row)
+                if event.type == pygame.MOUSEBUTTONUP:
+                    break
 
                 if pos in positions:
                     positions.remove(pos)
                 else:
                     positions.add(pos)
 
+            # Start drawing when the mouse button is pressed and held
+            # play will be paused once started drawing
+            if event.type == pygame.MOUSEBUTTONDOWN and event.button == 1:
+                drawing = True
+                playing = False
+
+            elif event.type == pygame.MOUSEBUTTONUP and event.button == 1:
+                drawing = False
+            # Draw continuously while the left mouse button is held down
+            elif event.type == pygame.MOUSEMOTION and drawing:
+                x, y = pygame.mouse.get_pos()
+                col = x // TILE_SIZE
+                row = y // TILE_SIZE
+                pos = (col, row)
+
+                if pos not in positions:
+                    positions.add(pos)
+
+            # Play and pause feature (Press space_bar)
             if event.type == pygame.KEYDOWN:
                 if event.key == pygame.K_SPACE:
                     playing = not playing
