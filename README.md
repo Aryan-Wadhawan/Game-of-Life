@@ -12,4 +12,7 @@ G can be presed during the life generation to add randomness.
 
 Mouse click can be used to add and remove life.
 
-Next Update:= Click and Drag mouse to add/remove life on the grid.
+Update:= Click and Drag mouse to add/remove life on the grid. (COMPLETED 29/11/23)
+
+Next Update:= Addition of more cellular automata function along with an option for the user to make their own laws under given set of rules.
+
