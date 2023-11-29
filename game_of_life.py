@@ -6,12 +6,16 @@ BLACK = (0, 0, 0)
 GREY = (128, 128, 128)
 BLUE = (30, 30, 100)
 
-print("Do you wish to manually scale the display?(yes or no)")
+print("Do you wish to manually scale the display?(y or n)")
 input_width_height = 800
 input_tile = 20
 if input().lower().startswith('y'):
     print("What should be the width or height? (Min 400, Max 1450)")
     input_width_height = int(input())
+    if (input_width_height > 1450):
+        input_width_height = 1450
+    if (input_width_height < 400):
+        input_width_height = 400
 
     print("What should be the size of each tile?")
     input_tile = int(input())
