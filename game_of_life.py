@@ -1,14 +1,23 @@
 import pygame
 import random
-
 pygame.init()
 
 BLACK = (0, 0, 0)
 GREY = (128, 128, 128)
 BLUE = (30, 30, 100)
 
-WIDTH, HEIGHT = 800, 800
-TILE_SIZE = 20
+print("Do you wish to manually scale the display?(yes or no)")
+input_width_height = 800
+input_tile = 20
+if input().lower().startswith('y'):
+    print("What should be the width or height? (Min 400, Max 1450)")
+    input_width_height = int(input())
+
+    print("What should be the size of each tile?")
+    input_tile = int(input())
+
+WIDTH, HEIGHT = input_width_height, input_width_height
+TILE_SIZE = input_tile
 GRID_WIDTH = WIDTH // TILE_SIZE
 GRID_HEIGHT = HEIGHT // TILE_SIZE
 FPS = 60
